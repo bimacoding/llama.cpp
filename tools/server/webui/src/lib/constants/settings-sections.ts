@@ -7,6 +7,7 @@
 export const SETTINGS_SECTION_TITLES = {
 	GENERAL: 'General',
 	DISPLAY: 'Display',
+	VOICE: 'Voice Conversation',
 	SAMPLING: 'Sampling',
 	PENALTIES: 'Penalties',
 	AGENTIC: 'Agentic',
@@ -23,6 +24,7 @@ export type SettingsSectionTitle =
 import {
 	Funnel,
 	AlertTriangle,
+	AudioLines,
 	Code,
 	Monitor,
 	ListRestart,
@@ -158,6 +160,33 @@ export const SETTINGS_CHAT_SECTIONS: SettingsSection[] = [
 				key: SETTINGS_KEYS.ALWAYS_SHOW_AGENTIC_TURNS,
 				label: 'Always show agentic turns in conversation',
 				type: SettingsFieldType.CHECKBOX
+			}
+		]
+	},
+	{
+		title: SETTINGS_SECTION_TITLES.VOICE,
+		slug: 'voice',
+		icon: AudioLines,
+		fields: [
+			{
+				key: SETTINGS_KEYS.VOICE_API_KEY,
+				label: 'OpenRouter API Key',
+				type: SettingsFieldType.INPUT
+			},
+			{
+				key: SETTINGS_KEYS.VOICE_STT_MODEL,
+				label: 'Speech-to-Text Model',
+				type: SettingsFieldType.INPUT
+			},
+			{
+				key: SETTINGS_KEYS.VOICE_TTS_MODEL,
+				label: 'Text-to-Speech Model',
+				type: SettingsFieldType.INPUT
+			},
+			{
+				key: SETTINGS_KEYS.VOICE_TTS_VOICE,
+				label: 'TTS Voice',
+				type: SettingsFieldType.INPUT
 			}
 		]
 	},

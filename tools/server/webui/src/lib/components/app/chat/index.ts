@@ -177,6 +177,21 @@ export { default as ChatFormActionsAdd } from './ChatForm/ChatFormActions/ChatFo
 export { default as ChatFormActionRecord } from './ChatForm/ChatFormActions/ChatFormActionRecord.svelte';
 
 /**
+ * Voice Conversation entry button rendered next to the "+" attachment button.
+ * Opens the full-screen VoiceConversationDialog that drives the STT → chat → TTS flow
+ * via OpenRouter while reusing the existing chat completion pipeline (tools/MCP/agentic).
+ */
+export { default as ChatFormActionVoiceConversation } from './ChatForm/ChatFormActions/ChatFormActionVoiceConversation.svelte';
+
+/**
+ * Full-screen Voice Conversation overlay. Records the user's voice, sends the
+ * transcript through chatStore.sendMessage (so all existing tools/MCP/agentic
+ * features remain active), and reads the assistant's response back via TTS.
+ * Conversation is persisted in the regular chat history.
+ */
+export { default as VoiceConversationDialog } from './VoiceConversation/VoiceConversationDialog.svelte';
+
+/**
  * Container for chat form action buttons. Arranges file attachment, audio record,
  * and submit/stop buttons in a horizontal layout. Handles conditional visibility
  * based on model capabilities and loading state.

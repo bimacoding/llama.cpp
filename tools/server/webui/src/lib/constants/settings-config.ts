@@ -29,6 +29,11 @@ export const SETTING_CONFIG_DEFAULT: Record<string, string | number | boolean | 
 	showRawModelNames: false,
 	mcpServers: '[]',
 	mcpServerUsageStats: '{}', // JSON object: { [serverId]: usageCount }
+	// Voice conversation (OpenRouter STT + TTS)
+	voiceApiKey: '',
+	voiceSttModel: 'openai/whisper-1',
+	voiceTtsModel: 'openai/gpt-4o-mini-tts-2025-12-15',
+	voiceTtsVoice: 'alloy',
 	agenticMaxTurns: 10,
 	agenticMaxToolPreviewLines: 25,
 	showToolCallInProgress: false,
@@ -142,6 +147,14 @@ export const SETTING_CONFIG_INFO: Record<string, string> = {
 		'Configure MCP servers as a JSON list. Use the form in the MCP Client settings section to edit.',
 	mcpServerUsageStats:
 		'Usage statistics for MCP servers. Tracks how many times tools from each server have been used.',
+	voiceApiKey:
+		'OpenRouter API key used by the Voice Conversation feature for speech-to-text and text-to-speech.',
+	voiceSttModel:
+		'OpenRouter model used to transcribe your voice (e.g. <code>openai/whisper-large-v3-turbo</code>).',
+	voiceTtsModel:
+		"OpenRouter model used to synthesize the assistant's voice reply (e.g. <code>openai/gpt-4o-mini-tts-2025-12-15</code>).",
+	voiceTtsVoice:
+		'OpenRouter TTS voice identifier (e.g. <code>alloy</code>, <code>echo</code>, <code>fable</code>, <code>onyx</code>, <code>nova</code>, <code>shimmer</code>).',
 	agenticMaxTurns:
 		'Maximum number of tool execution cycles before stopping (prevents infinite loops).',
 	agenticMaxToolPreviewLines:

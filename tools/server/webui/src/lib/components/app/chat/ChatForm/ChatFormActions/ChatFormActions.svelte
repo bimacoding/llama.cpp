@@ -5,7 +5,8 @@
 		ChatFormActionsAdd,
 		ChatFormActionModels,
 		ChatFormActionRecord,
-		ChatFormActionSubmit
+		ChatFormActionSubmit,
+		ChatFormActionVoiceConversation
 	} from '$lib/components/app';
 	import { FileTypeCategory } from '$lib/enums';
 	import { mcpStore } from '$lib/stores/mcp.svelte';
@@ -23,6 +24,7 @@
 		isRecording?: boolean;
 		showAddButton?: boolean;
 		showModelSelector?: boolean;
+		showVoiceConversationButton?: boolean;
 		uploadedFiles?: ChatUploadedFile[];
 		onFileUpload?: () => void;
 		onMicClick?: () => void;
@@ -30,6 +32,7 @@
 		onSystemPromptClick?: () => void;
 		onMcpPromptClick?: () => void;
 		onMcpResourcesClick?: () => void;
+		onVoiceConversationClick?: () => void;
 	}
 
 	let {
@@ -41,13 +44,15 @@
 		isRecording = false,
 		showAddButton = true,
 		showModelSelector = true,
+		showVoiceConversationButton = true,
 		uploadedFiles = [],
 		onFileUpload,
 		onMicClick,
 		onStop,
 		onSystemPromptClick,
 		onMcpPromptClick,
-		onMcpResourcesClick
+		onMcpResourcesClick,
+		onVoiceConversationClick
 	}: Props = $props();
 
 	let currentConfig = $derived(config());
@@ -88,20 +93,26 @@
 	class="flex w-full items-center gap-3 {className} {showAddButton ? '' : 'justify-end'}"
 	style="container-type: inline-size"
 >
-	{#if showAddButton}
+	{#if showAddButton || showVoiceConversationButton}
 		<div class="mr-auto flex items-center gap-2">
-			<ChatFormActionsAdd
-				{disabled}
-				{hasAudioModality}
-				{hasVisionModality}
-				{hasMcpPromptsSupport}
-				{hasMcpResourcesSupport}
-				{onFileUpload}
-				{onSystemPromptClick}
-				{onMcpPromptClick}
-				{onMcpResourcesClick}
-				onMcpSettingsClick={() => goto('#/settings/mcp')}
-			/>
+			{#if showAddButton}
+				<ChatFormActionsAdd
+					{disabled}
+					{hasAudioModality}
+					{hasVisionModality}
+					{hasMcpPromptsSupport}
+					{hasMcpResourcesSupport}
+					{onFileUpload}
+					{onSystemPromptClick}
+					{onMcpPromptClick}
+					{onMcpResourcesClick}
+					onMcpSettingsClick={() => goto('#/settings/mcp')}
+				/>
+			{/if}
+
+			{#if showVoiceConversationButton}
+				<ChatFormActionVoiceConversation {disabled} onclick={() => onVoiceConversationClick?.()} />
+			{/if}
 		</div>
 	{/if}
 

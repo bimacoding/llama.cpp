@@ -6,7 +6,8 @@
 		ChatFormMcpResourcesList,
 		ChatFormPickers,
 		ChatFormTextarea,
-		DialogMcpResourcesBrowser
+		DialogMcpResourcesBrowser,
+		VoiceConversationDialog
 	} from '$lib/components/app';
 	import {
 		CLIPBOARD_CONTENT_QUOTE_PREFIX,
@@ -109,6 +110,9 @@
 	// Resource Dialog State
 	let isResourceDialogOpen = $state(false);
 	let preSelectedResourceUri = $state<string | undefined>(undefined);
+
+	// Voice Conversation State
+	let isVoiceConversationOpen = $state(false);
 
 	let currentConfig = $derived(config());
 	let pasteLongTextToFileLength = $derived.by(() => {
@@ -551,6 +555,7 @@
 				onSystemPromptClick={() => onSystemPromptClick?.({ message: value, files: uploadedFiles })}
 				onMcpPromptClick={showMcpPromptButton ? () => (isPromptPickerOpen = true) : undefined}
 				onMcpResourcesClick={() => (isResourceDialogOpen = true)}
+				onVoiceConversationClick={() => (isVoiceConversationOpen = true)}
 			/>
 		</div>
 	</div>
@@ -568,3 +573,5 @@
 		}
 	}}
 />
+
+<VoiceConversationDialog bind:open={isVoiceConversationOpen} />

@@ -48,6 +48,11 @@ export const SETTINGS_KEYS = {
 	DRY_BASE: 'dry_base',
 	DRY_ALLOWED_LENGTH: 'dry_allowed_length',
 	DRY_PENALTY_LAST_N: 'dry_penalty_last_n',
+	// Voice Conversation
+	VOICE_API_KEY: 'voiceApiKey',
+	VOICE_STT_MODEL: 'voiceSttModel',
+	VOICE_TTS_MODEL: 'voiceTtsModel',
+	VOICE_TTS_VOICE: 'voiceTtsVoice',
 	// MCP
 	AGENTIC_MAX_TURNS: 'agenticMaxTurns',
 	ALWAYS_SHOW_AGENTIC_TURNS: 'alwaysShowAgenticTurns',
